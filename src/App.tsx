@@ -51,30 +51,30 @@ function App() {
   }, [maxEnergy, energyRecoveryRate]);
 
   useEffect(() => {
-  if (points >= 10000000) {
+  if (points >= 5000000) {
     setRank('Grand Master');
     setMaxEnergy(20000);
     setPointsToAdd(7);
     setEnergyToReduce(7);
   }
-  else if (points >= 5000000) {
+  else if (points >= 1000000) {
   setRank('Elite Master');
   setMaxEnergy(18000);
   setPointsToAdd(6);
   setEnergyToReduce(6);
   }
-    else if (points >= 1000000) {
+    else if (points >= 500000) {
     setRank('Master');
     setMaxEnergy(15000);
     setPointsToAdd(5);
     setEnergyToReduce(5);
   }
-    else if (points >= 500000) {
+    else if (points >= 100000) {
       setRank('Elite Heroic');
       setMaxEnergy(12000);
       setPointsToAdd(4);
       setEnergyToReduce(4);
-    } else if (points >= 100000) {
+    } else if (points >= 50000) {
       setRank('Heroic');
       setMaxEnergy(9000);
       setPointsToAdd(3);
@@ -94,7 +94,7 @@ function App() {
       
       // Schedule points addition after 15 seconds
       setTimeout(() => {
-        setPoints(prevPoints => prevPoints + 100000);
+        setPoints(prevPoints => prevPoints + 20000);
         setClaimedMessage('');
       }, 15000);
   
@@ -117,7 +117,7 @@ function App() {
       
       // Schedule points addition after 15 seconds
       setTimeout(() => {
-        setPoints(prevPoints => prevPoints + 100000);
+        setPoints(prevPoints => prevPoints + 20000);
         setClaimedMessage('');
       }, 15000);
   
@@ -262,14 +262,14 @@ function App() {
           style={{ backgroundColor: '#E7F0DC', color: 'black', borderColor: 'black' }}
           onClick={handleSubscribeClick}
         >
-          Subscribe On Youtube +100,000 coins
+          Subscribe On Youtube +20,000 coins
         </button>
         <button
           className="py-2 px-4 rounded border w-full"
           style={{ backgroundColor: '#E7F0DC', color: 'black', borderColor: 'black' }}
           onClick={handleFollowClick}
         >
-          Follow us on Instagram +100,000 coins
+          Follow us on Instagram +20,000 coins
         </button>
         {claimedMessage && (
           <div className="mt-4 text-center" style={{ color: 'gray' }}>
