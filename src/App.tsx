@@ -12,8 +12,8 @@ function App() {
   const [showSettingsModal, setShowSettingsModal] = useState(false); // State for Settings Modal
   const [rank, setRank] = useState('Gold');
   const [maxEnergy, setMaxEnergy] = useState(6500);
-  const [pointsToAdd, setPointsToAdd] = useState(5);
-  const [energyToReduce, setEnergyToReduce] = useState(5);
+  const [pointsToAdd, setPointsToAdd] = useState(1);
+  const [energyToReduce, setEnergyToReduce] = useState(1);
   const [subscribeClickCount, setSubscribeClickCount] = useState(0);
   const [followClickCount, setFollowClickCount] = useState(0);
   const [claimedMessage, setClaimedMessage] = useState('');
@@ -45,7 +45,7 @@ function App() {
   useEffect(() => {
     const interval = setInterval(() => {
       setEnergy((prevEnergy) => Math.min(prevEnergy + energyRecoveryRate, maxEnergy));
-    }, 480);
+    }, 600);
 
     return () => clearInterval(interval);
   }, [maxEnergy, energyRecoveryRate]);
@@ -54,36 +54,36 @@ function App() {
   if (points >= 10000000) {
     setRank('Grand Master');
     setMaxEnergy(20000);
-    setPointsToAdd(11);
-    setEnergyToReduce(11);
+    setPointsToAdd(7);
+    setEnergyToReduce(7);
   }
   else if (points >= 5000000) {
   setRank('Elite Master');
   setMaxEnergy(18000);
-  setPointsToAdd(10);
-  setEnergyToReduce(10);
+  setPointsToAdd(6);
+  setEnergyToReduce(6);
   }
     else if (points >= 1000000) {
     setRank('Master');
     setMaxEnergy(15000);
-    setPointsToAdd(9);
-    setEnergyToReduce(9);
+    setPointsToAdd(5);
+    setEnergyToReduce(5);
   }
     else if (points >= 500000) {
       setRank('Elite Heroic');
       setMaxEnergy(12000);
-      setPointsToAdd(8);
-      setEnergyToReduce(8);
-    } else if (points >= 200000) {
+      setPointsToAdd(4);
+      setEnergyToReduce(4);
+    } else if (points >= 100000) {
       setRank('Heroic');
       setMaxEnergy(9000);
-      setPointsToAdd(7);
-      setEnergyToReduce(7);
-    } else if (points >= 100000) {
+      setPointsToAdd(3);
+      setEnergyToReduce(3);
+    } else if (points >= 25000) {
       setRank('Diamond');
       setMaxEnergy(7500);
-      setPointsToAdd(6);
-      setEnergyToReduce(6);
+      setPointsToAdd(2);
+      setEnergyToReduce(2);
     }
   }, [points]);
 
