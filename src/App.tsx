@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Arrow from './icons/Arrow';
-import { bear, coin, highVoltage, rocket, trophy, catcoin3, settings1, wallet1, coincat } from './images'; // Import the wallet image
+import { bear, coin, highVoltage, rocket, trophy, catcoin3, wallet1, coincat } from './images'; // Import the wallet image
 
 function App() {
   const [points, setPoints] = useState(0);
@@ -9,7 +9,6 @@ function App() {
   const [clicks, setClicks] = useState<{ id: number, x: number, y: number }[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [showWalletModal, setShowWalletModal] = useState(false); // State for Wallet Modal
-  const [showSettingsModal, setShowSettingsModal] = useState(false); // State for Settings Modal
   const [rank, setRank] = useState('Gold');
   const [maxEnergy, setMaxEnergy] = useState(6500);
   const [pointsToAdd, setPointsToAdd] = useState(1);
@@ -51,25 +50,22 @@ function App() {
   }, [maxEnergy, energyRecoveryRate]);
 
   useEffect(() => {
-  if (points >= 5000000) {
-    setRank('Grand Master');
-    setMaxEnergy(20000);
-    setPointsToAdd(7);
-    setEnergyToReduce(7);
-  }
-  else if (points >= 1000000) {
-  setRank('Elite Master');
-  setMaxEnergy(18000);
-  setPointsToAdd(6);
-  setEnergyToReduce(6);
-  }
-    else if (points >= 500000) {
-    setRank('Master');
-    setMaxEnergy(15000);
-    setPointsToAdd(5);
-    setEnergyToReduce(5);
-  }
-    else if (points >= 100000) {
+    if (points >= 5000000) {
+      setRank('Grand Master');
+      setMaxEnergy(20000);
+      setPointsToAdd(7);
+      setEnergyToReduce(7);
+    } else if (points >= 1000000) {
+      setRank('Elite Master');
+      setMaxEnergy(18000);
+      setPointsToAdd(6);
+      setEnergyToReduce(6);
+    } else if (points >= 500000) {
+      setRank('Master');
+      setMaxEnergy(15000);
+      setPointsToAdd(5);
+      setEnergyToReduce(5);
+    } else if (points >= 100000) {
       setRank('Elite Heroic');
       setMaxEnergy(12000);
       setPointsToAdd(4);
@@ -149,14 +145,6 @@ function App() {
     setShowWalletModal(false); // Close the wallet modal
   };
 
-  const handleSettingsClick = () => {
-    setShowSettingsModal(true); // Show the settings modal
-  };
-
-  const handleCloseSettingsModal = () => {
-    setShowSettingsModal(false); // Close the settings modal
-  };
-
   return (
     <div className="bg-gradient-main min-h-screen px-4 flex-col items-center text-white font-medium">
       <div className="absolute inset-0 h-1/2 bg-gradient-overlay z-0"></div>
@@ -168,14 +156,11 @@ function App() {
         <div className="fixed top-0 left-0 w-full px-4 pt-8 z-10 flex flex-col items-center text-white">
           <div className="w-full flex justify-between items-center">
             <div className="text-lg font-bold" style={{ fontFamily: 'ginger peachy nf', color: 'white' }}>
-              C S - COIN
+              CS - COIN
             </div>
             <div className="flex gap-4">
               <button onClick={handleWalletClick} className="cursor-pointer">
                 <img src={wallet1} alt="Wallet" width={24} height={24} /> {/* Updated button */}
-              </button>
-              <button onClick={handleSettingsClick} className="cursor-pointer">
-              <img src={settings1} alt="Wallet" width={24} height={24} /> {/* Updated button */}
               </button>
             </div>
           </div>
@@ -251,82 +236,60 @@ function App() {
         </div>
 
         {showModal && (
-  <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-20">
-    <div className="p-8 rounded-lg flex flex-col items-center gap-4 relative w-full max-w-lg h-full" style={{ backgroundColor: '#E7F0DC', color: 'black' }}>
-      <button className="absolute top-2 right-2 bg-transparent border-none text-xl" onClick={handleCloseModal}>
-        ☒
-      </button>
-      <div className="flex flex-col gap-4 w-full max-w-sm mx-auto">
-        <button
-          className="py-2 px-4 rounded border w-full"
-          style={{ backgroundColor: '#E7F0DC', color: 'black', borderColor: 'black' }}
-          onClick={handleSubscribeClick}
-        >
-          Subscribe On Youtube +20,000 coins
-        </button>
-        <button
-          className="py-2 px-4 rounded border w-full"
-          style={{ backgroundColor: '#E7F0DC', color: 'black', borderColor: 'black' }}
-          onClick={handleFollowClick}
-        >
-          Follow us on Instagram +20,000 coins
-        </button>
-        {claimedMessage && (
-          <div className="mt-4 text-center" style={{ color: 'gray' }}>
-            {claimedMessage}
+          <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-20">
+            <div className="p-8 rounded-lg flex flex-col items-center gap-4 relative w-full max-w-lg h-full" style={{ backgroundColor: '#E7F0DC', color: 'black' }}>
+              <button className="absolute top-2 right-2 bg-transparent border-none text-xl" onClick={handleCloseModal}>
+                ☒
+              </button>
+              <div className="flex flex-col gap-4 w-full max-w-sm mx-auto">
+                <button
+                  className="py-2 px-4 rounded border w-full"
+                  style={{ backgroundColor: '#E7F0DC', color: 'black', borderColor: 'black' }}
+                  onClick={handleSubscribeClick}
+                >
+                  Subscribe On Youtube +20,000 coins
+                </button>
+                <button
+                  className="py-2 px-4 rounded border w-full"
+                  style={{ backgroundColor: '#E7F0DC', color: 'black', borderColor: 'black' }}
+                  onClick={handleFollowClick}
+                >
+                  Follow us on Instagram +20,000 coins
+                </button>
+                {claimedMessage && (
+                  <div className="mt-4 text-center" style={{ color: 'gray' }}>
+                    {claimedMessage}
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         )}
-      </div>
-    </div>
-  </div>
-)}
 
-{showWalletModal && (
-  <div className="fixed inset-0 flex items-center justify-center z-20" style={{ backgroundColor: '#E7F0DC', border: '1px solid black' }}> {/* Set background color and border directly */}
-    <div className="w-full max-w-md text-black p-8 rounded-lg relative flex flex-col h-full">
-      <button className="absolute top-2 right-2 text-black bg-transparent border-none text-xl" onClick={handleCloseWalletModal}>
-        ☒
-      </button>
-      <h1 className="text-center text-4xl font-bold mb-4" style={{ fontFamily: 'Playful' }}>Wallet</h1>
-      <div className="text-center mb-6">
-        <span className="text-1xl font-bold flex items-center justify-center mt-2">Your Balance:</span>
-        <div className="text-3xl font-bold flex items-center justify-center mt-2">
-          <img src={coincat} width={32} height={32} alt="Coin" />
-          <span className="ml-2">{points.toLocaleString()}</span>
-        </div>
-      </div>
-      <div className="flex-grow"></div>
-      <div className="text-center mt-6">
-        <button className="bg-white text-[#A020F0] border border-[#A020F0] py-2 px-4 rounded w-full">
-          Connect Wallet
-          <div className="text-xs mt-1">not available now</div>
-        </button>
-      </div>
-    </div>
-  </div>
-)}
-
-
-{showSettingsModal && (
-  <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-20">
-    <div className="settings-modal-background bg-[#E7F0DC] p-8 border border-black flex flex-col items-center gap-4 relative w-full max-w-lg h-full"> {/* Changed background color */}
-      <button className="absolute top-2 right-2 text-black bg-transparent border-none text-xl" onClick={handleCloseSettingsModal}>
-        ☒
-      </button>
-      <div className="flex flex-col gap-4 w-full h-full">
-        <div className="bg-white border border-black rounded-lg p-4 flex-grow">
-          <h2 className="text-3xl font-bold text-black mb-4">Hello,</h2> {/* Added margin-bottom */}
-          <p className="text-1xl font-bold text-gray-700">Blockchain</p> {/* Updated text color */}
-        </div>
-        <div className="bg-white border border-black rounded-lg p-4 h-24">
-          <h3 className="text-lg font-semibold">Bottom Box</h3>
-          <p>This is the bottom box with a smaller height.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-)}
-
+        {showWalletModal && (
+          <div className="fixed inset-0 flex items-center justify-center z-20" style={{ backgroundColor: '#E7F0DC', border: '1px solid black' }}> {/* Set background color and border directly */}
+            <div className="w-full max-w-md text-black p-8 rounded-lg relative flex flex-col h-full">
+              <button className="absolute top-2 right-2 text-black bg-transparent border-none text-xl" onClick={handleCloseWalletModal}>
+                ☒
+              </button>
+              <h1 className="text-center text-4xl font-bold mb-4" style={{ fontFamily: 'Playful' }}>Wallet</h1>
+              <div className="text-center mb-6">
+                <span className="text-1xl font-bold flex items-center justify-center mt-2">Your Balance:</span>
+                <div className="text-3xl font-bold flex items-center justify-center mt-2">
+                  <img src={coincat} width={32} height={32} alt="Coin" />
+                  <span className="ml-2">{points.toLocaleString()}</span>
+                </div>
+              </div>
+              <div className="flex-grow"></div>
+              <div className="text-center mt-6">
+                <button className="bg-white text-[#A020F0] border border-[#A020F0] py-2 px-4 rounded w-full">
+                  Connect Wallet
+                  <div className="text-xs mt-1">not available now</div>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
