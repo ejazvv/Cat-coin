@@ -86,7 +86,7 @@ function App() {
   const handleSubscribeClick = () => {
     if (subscribeClickCount === 1) {
       // Second click: Redirect
-      window.open('https://www.youtube.com/@IHATEYOUFF/videos', '_blank');
+      window.open('https://www.youtube.com/channel/UCvMTewm_eS1iPD0RyBpRosA', '_blank');
       
       // Schedule points addition after 15 seconds
       setTimeout(() => {
@@ -109,7 +109,7 @@ function App() {
   const handleFollowClick = () => {
     if (followClickCount === 1) {
       // Second click: Redirect
-      window.open('https://www.instagram.com/lubay_india/?igsh=MTd6Znh1aXdzbHZrZg%3D%3D', '_blank');
+      window.open('https://www.instagram.com/catsupercoin/?hl=en', '_blank');
       
       // Schedule points addition after 15 seconds
       setTimeout(() => {
